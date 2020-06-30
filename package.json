@@ -1,0 +1,44 @@
+{
+  "name": "@ethereum-optimism/Truffle-ERC20-Example",
+  "private": true,
+  "version": "0.0.1-alpha.5",
+  "description": "Example of using solc-transpiler & Web3 full node with Truffle to run a full ERC20 test suite",
+  "scripts": {
+    "clean": "rimraf build",
+    "build:evm": "truffle compile",
+    "test:evm": "truffle test ./truffle-tests/test-erc20.js",
+    "all:evm": "yarn clean && yarn build:evm && yarn test:evm",
+    "build:ovm": "DEBUG=info*,warn*,error* truffle compile --config truffle-config-ovm.js",
+    "test:ovm": "DEBUG=info*,warn* truffle test ./truffle-tests/test-erc20.js --config truffle-config-ovm.js",
+    "all:ovm": "yarn clean && yarn build:ovm && yarn test:ovm"
+  },
+  "keywords": [
+    "optimism",
+    "rollup",
+    "optimistic",
+    "ethereum",
+    "truffle",
+    "ovm",
+    "example",
+    "ERC20",
+    "token"
+  ],
+  "homepage": "https://github.com/ethereum-optimism/Truffle-ERC20-Example#readme",
+  "license": "MIT",
+  "author": "Optimism PBC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethereum-optimism/Truffle-ERC20-Example.git"
+  },
+  "dependencies": {
+    "@eth-optimism/rollup-full-node": "latest",
+    "@eth-optimism/solc-transpiler": "latest",
+    "@eth-optimism/ovm-truffle-provider-wrapper": "latest",
+    "rimraf": "^2.6.3",
+    "truffle": "^5.1.12",
+    "truffle-hdwallet-provider": "^1.0.17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
