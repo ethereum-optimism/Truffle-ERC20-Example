@@ -5,7 +5,7 @@ const mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble
 // Set this to the desired Execution Manager Address -- required for the transpiler
 process.env.EXECUTION_MANAGER_ADDRESS = process.env.EXECUTION_MANAGER_ADDRESS || "0xA193E42526F1FEA8C99AF609dcEabf30C1c29fAA";
 const gasPrice = process.env.OVM_DEFAULT_GAS_PRICE || 0;
-const gas = process.env.OVM_DEFAULT_GAS || 1000000000;
+const gas = process.env.OVM_DEFAULT_GAS || 10000000;
 
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
    */
   networks: {
     test: {
-      network_id: 108,
+      network_id: 108, // chain ID is 108
       provider: function() {
         return ProviderWrapper.wrapProviderAndStartLocalNode(new HDWalletProvider(mnemonic, "http://127.0.0.1:8545/", 0, 10));
       },
@@ -34,8 +34,8 @@ module.exports = {
 
   compilers: {
     solc: {
-      // Add path to the solc-transpiler
-      version: "node_modules/@eth-optimism/solc-transpiler",
+      // Add path to the optimism solc fork
+      version: "node_modules/@eth-optimism/solc",
     }
   }
 }
