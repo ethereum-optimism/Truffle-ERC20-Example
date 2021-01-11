@@ -35,6 +35,7 @@
     "@eth-optimism/solc": "0.5.16-alpha.0",
     "@eth-optimism/ovm-truffle-provider-wrapper": "^0.0.1-alpha.27",
     "rimraf": "^2.6.3",
+    "scrypt": "^6.0.3",
     "truffle": "^5.1.12",
     "truffle-hdwallet-provider": "^1.0.17"
   },
