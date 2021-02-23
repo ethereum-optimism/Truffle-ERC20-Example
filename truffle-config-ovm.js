@@ -8,13 +8,11 @@ module.exports = {
   networks: {
     test: {
       network_id: 420,
-      provider: function() {
-        return ganache.provider({
-          mnemonic: mnemonic,
-          network_id: 420,
-        })
-      },
-    },
+      provider: ganache.provider({
+        mnemonic: mnemonic,
+        network_id: 420,
+      })
+    }
   },
   compilers: {
     solc: {

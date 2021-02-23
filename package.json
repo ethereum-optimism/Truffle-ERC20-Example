@@ -30,7 +30,7 @@
     "url": "https://github.com/ethereum-optimism/Truffle-ERC20-Example.git"
   },
   "dependencies": {
-    "@eth-optimism/plugins": "^0.0.14",
+    "@eth-optimism/plugins": "^0.0.16",
     "@eth-optimism/solc": "^0.5.16-alpha.7",
     "rimraf": "^2.6.3",
     "truffle": "^5.1.12"
