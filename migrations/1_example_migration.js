@@ -1,12 +1,7 @@
 require('dotenv/config')
+const { getArtifact } = require('../utils/getArtifact')
 
 const useL2 = (process.env.TARGET === 'OVM')
-
-function getArtifact (target, contractName) {
-  const buildFolder = (target === true) ? 'build/contracts/ovm' : 'build'
-  const artifact = artifacts.require(`./${buildFolder}/${contractName}`)
-  return artifact
-}
 
 module.exports = function (deployer, accounts) {
   const tokenName = 'Optipus Coin'

@@ -1,13 +1,8 @@
+const { getArtifact } = require('../utils/getArtifact')
 /**
  * @dev Refactor to integration tests
  */
 let token;
-
-function getArtifact (target, contractName) {
-  const buildFolder = (target === true) ? 'build/contracts/ovm' : 'build'
-  const artifact = artifacts.require(`./${buildFolder}/${contractName}`)
-  return artifact
-}
 
 const useL2 = (process.env.TARGET === 'OVM')
 const ERC20 = getArtifact(useL2, 'ERC20')
