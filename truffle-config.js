@@ -1,4 +1,5 @@
 module.exports = {
+  contracts_build_directory: './build',
   networks: {
     ethereum: {
       network_id: 31337,

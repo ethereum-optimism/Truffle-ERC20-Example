@@ -1,9 +1,6 @@
-const { getArtifact } = require('../utils/getArtifact')
-
 let token
 
-const useL2 = (process.env.TARGET === 'OVM')
-const ERC20 = getArtifact(useL2, 'ERC20')
+const ERC20 = artifacts.require('ERC20')
 
 contract('ERC20', (accounts) => {
   const tokenName = 'My Optimistic Coin'
@@ -216,15 +213,22 @@ contract('ERC20', (accounts) => {
   /* eslint-disable no-underscore-dangle */
   it('events: should fire Transfer event properly', async () => {
     const res = await token.transfer(accounts[ 1 ], '2666', { from: accounts[ 0 ] })
-    const transferLog = res.logs.find(element => element.event.match('Transfer'))
+    const transferLog = res.logs.find(
+      element => element.event.match('Transfer') &&
+        element.address.match(token.address)
+    )
     assert.strictEqual(transferLog.args._from, accounts[ 0 ])
+    // L2 ETH transfer also emits a transfer event
     assert.strictEqual(transferLog.args._to, accounts[ 1 ])
     assert.strictEqual(transferLog.args._value.toString(), '2666')
   })
 
   it('events: should fire Transfer event normally on a zero transfer', async () => {
     const res = await token.transfer(accounts[ 1 ], '0', { from: accounts[ 0 ] })
-    const transferLog = res.logs.find(element => element.event.match('Transfer'))
+    const transferLog = res.logs.find(
+      element => element.event.match('Transfer') &&
+        element.address.match(token.address)
+    )
     assert.strictEqual(transferLog.args._from, accounts[ 0 ])
     assert.strictEqual(transferLog.args._to, accounts[ 1 ])
     assert.strictEqual(transferLog.args._value.toString(), '0')

@@ -1,7 +1,10 @@
 # Project specific
-# optimism-integration
-# build
-# truffle-config-ovm.js
+optimism-integration
+build
+truffle-config-ovm.js
+build 
+build-ovm
+migrations
 
 # Logs
 logs
