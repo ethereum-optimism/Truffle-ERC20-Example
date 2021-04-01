@@ -45,10 +45,10 @@
     util.promisify "^1.0.0"
     uuid "^8.3.0"
 
-"@eth-optimism/plugins@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/plugins/-/plugins-0.0.14.tgz#b61d9be5a9bf6d375aef4899418f79904f8acb50"
-  integrity sha512-EAow3XL76V9IFOPMTuWOjXxU8GIkmKVRqtiemefu7O8nUV2WIVdiHPktU4Ro8sLuIDaJUERt1PfQAQlGSB3W2w==
+"@eth-optimism/plugins@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/plugins/-/plugins-0.0.16.tgz#eae8a3e3be4d92aac866e31acad96291d4ae5c76"
+  integrity sha512-vXYljJzQu+kSUydG6WIgGxfnP54nbutKmzbAcy8j2GJgLLhtZSxCIA+UhBiO1mA4k/qFeUGJcf8kZfaddKygIQ==
   dependencies:
     "@eth-optimism/contracts" "0.0.2-alpha.14"
     "@eth-optimism/ethereumjs-vm" "^4.2.0-alpha.2"
@@ -3432,6 +3432,7 @@ ethereumjs-blockchain@^4.0.3:
     semaphore "^1.1.0"
 
 ethereumjs-common@1.5.0, "ethjs-common-v1@npm:ethereumjs-common@1.5.0":
+  name ethjs-common-v1
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/ethereumjs-common/-/ethereumjs-common-1.5.0.tgz#d3e82fc7c47c0cef95047f431a99485abc9bb1cd"
   integrity sha512-SZOjgK1356hIY7MRj3/ma5qtfr/4B5BL+G4rP/XSMYr2z1H5el4RX5GReYCKmQmYI/nSBmRnwrZ17IfHuG0viQ==
@@ -3458,6 +3459,7 @@ ethereumjs-tx@^1.1.1, ethereumjs-tx@^1.2.0, ethereumjs-tx@^1.2.2, ethereumjs-tx@
     ethereumjs-util "^5.0.0"
 
 ethereumjs-util@6.2.1, ethereumjs-util@^6.0.0, ethereumjs-util@^6.1.0, ethereumjs-util@^6.2.0, "ethjs-util-v6@npm:ethereumjs-util@6.2.1":
+  name ethjs-util-v6
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/ethereumjs-util/-/ethereumjs-util-6.2.1.tgz#fcb4e4dd5ceacb9d2305426ab1a5cd93e3163b69"
   integrity sha512-W2Ktez4L01Vexijrm5EB6w7dg4n/TgpoYU4avuT5T3Vmnw/eCRtiBrJfQYS/DCSvDIOLn2k57GcHdeBcgVxAqw==
