@@ -9,10 +9,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@eth-optimism/solc@^0.5.16-alpha.7":
-  version "0.5.16-alpha.7"
-  resolved "https://registry.yarnpkg.com/@eth-optimism/solc/-/solc-0.5.16-alpha.7.tgz#3767a34715dce6cb342ae66df834cc7ed6d9a6e3"
-  integrity sha512-Lzcd1379o4rN3vIdxyI0z2bbbG7SMEA+tOC78UwNak7uCbCUEaXN8Qo5+X5wSp01Ab6TjfrBku6jTUSTLlwZuA==
+"@eth-optimism/solc@^0.7.6-alpha.1":
+  version "0.7.6-alpha.1"
+  resolved "https://registry.yarnpkg.com/@eth-optimism/solc/-/solc-0.7.6-alpha.1.tgz#f503073161fdc0029dbc1dae6fae28eeb046b559"
+  integrity sha512-tVYeBtjwNRUDmaTdJNlKI0lTM0yV1hez0jPFOtACoepBwBEZOuuFLBgQLBOWPaR95UU2ke1YjqB7rrpkE3oRDg==
   dependencies:
     command-exists "^1.2.8"
     commander "3.0.2"
@@ -1375,11 +1375,6 @@ dot-case@^2.1.0:
   integrity sha1-NNzzf1Co6TwrO8qLt/uRVcfaO+4=
   dependencies:
     no-case "^2.2.0"
-
-dotenv@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
-  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 duplexer3@^0.1.4:
   version "0.1.4"
