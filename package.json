@@ -4,7 +4,11 @@
   "version": "1.0.0-alpha.1",
   "description": "Example of using Optimistic Ethereum compiler & local Optimistic Ethereum nodes with Truffle to run a full ERC20 test suite",
   "scripts": {
-    "clean": "rimraf build"
+    "clean": "rimraf build",
+    "migrate:evm": "truffle migrate --network ethereum",
+    "migrate:ovm": "TARGET=OVM truffle migrate --network optimistic_ethereum --config truffle-config-ovm.js",
+    "test:evm": "truffle test ./test/erc20.spec.js",
+    "test:ovm": "TARGET=OVM truffle test ./test/erc20.spec.js --network optimistic_ethereum --config truffle-config-ovm.js"
   },
   "keywords": [
     "optimism",
@@ -26,6 +30,7 @@
   },
   "dependencies": {
     "@eth-optimism/solc": "^0.7.6-alpha.1",
+    "@truffle/hdwallet-provider": "^1.2.6",
     "rimraf": "^2.6.3",
     "truffle": "^5.3.0"
   },
