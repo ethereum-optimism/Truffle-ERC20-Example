@@ -1,13 +1,9 @@
+const { getArtifact } = require('../utils/getArtifact')
+
 /**
  * @dev Refactor to integration tests
  */
 let token;
-
-function getArtifact (target, contractName) {
-  const buildFolder = (target === true) ? 'build/contracts/ovm' : 'build'
-  const artifact = artifacts.require(`./${buildFolder}/${contractName}`)
-  return artifact
-}
 
 const useL2 = (process.env.TARGET === 'OVM')
 const ERC20 = getArtifact(useL2, 'ERC20')
@@ -63,9 +59,6 @@ contract('Optimistic ERC20', (accounts) => {
   });
 
   it('transfers: should transfer 10000 to accounts[1] with accounts[0] having 10000', async () => {
-    console.log('\n \n \n The address 1: ', accounts[ 0 ], ' \n \n \n ')
-    console.log('\n \n \n The address 2: ', accounts[ 1 ], ' \n \n \n ')
-    console.log('\n \n \n The address 3: ', accounts[ 2 ], ' \n \n \n ')
     await token.transfer(accounts[ 1 ], 10000, { from: accounts[ 0 ] });
     const balance = await token.balanceOf.call(accounts[ 1 ]);
     assert.strictEqual(balance.toNumber(), 10000);
@@ -82,11 +75,6 @@ contract('Optimistic ERC20', (accounts) => {
   });
 
   it('transfers: should handle zero-transfers normally', async () => {
-    console.log(
-      '\n \n \n Token address is equal to the deployed address 0x2b57c4aB6D64a2befcb67D46bdc302809418bd1c: ',
-      token.address,
-      '\n \n \n'
-    )
     assert(await token.transfer.call(accounts[ 1 ], 0, { from: accounts[ 0 ] }), 'zero-transfer has failed');
   });
 
