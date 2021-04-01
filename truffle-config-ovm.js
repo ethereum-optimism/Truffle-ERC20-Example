@@ -7,9 +7,6 @@ module.exports = {
   networks: {
     optimistic_ethereum: {
       network_id: 420,
-      host: '127.0.0.1',
-      port: 8545,
-      gasPrice: 0
     }
   },
   compilers: {
