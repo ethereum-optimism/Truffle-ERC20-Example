@@ -1,10 +1,9 @@
-require('dotenv/config')
 const { getArtifact } = require('../utils/getArtifact')
 
 const useL2 = (process.env.TARGET === 'OVM')
 
 module.exports = function (deployer, accounts) {
-  const tokenName = 'Optipus Coin'
+  const tokenName = 'My Optimistic Coin'
   const tokenSymbol = 'OPT'
   const tokenDecimals = 1
 
