@@ -109,7 +109,7 @@ Here, `ovm` signifies that the contracts contained in this directory have been c
 
 ### Test an Ethereum contract
 
-Testing with Truffle is easy. We've included a simple set of ERC20 tests inside `Truffle-ERC20-Example/test/erc20.spec.js`. Let's run these tests with `truffle`:
+Testing with Truffle is easy. We've included a simple set of ERC20 tests inside [`Truffle-ERC20-Example/test/erc20.spec.js`](https://github.com/ethereum-optimism/Truffle-ERC20-Example/blob/main/test/erc20.test.js). Let's run these tests with `truffle`:
 
 ```sh
 yarn truffle test ./test/erc20.spec.js
@@ -124,9 +124,9 @@ But first we'll need to get a local version of an Optimistic Ethereum node runni
 
 -------
 
-Fortunately, we have a handy dandy repository that makes it easy to spin up a local Optimistic Ethereum node!
+Fortunately, we have a [handy dandy repository](https://github.com/ethereum-optimism/optimism-integration) that makes it easy to spin up a local Optimistic Ethereum node!
 
-Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that here).
+Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that [here](https://docs.docker.com/engine/install/)).
 
 Now we just need to install our Optimistic Ethereum node by running:
 
