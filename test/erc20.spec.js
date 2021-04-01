@@ -218,11 +218,7 @@ contract('ERC20', (accounts) => {
     const res = await token.transfer(accounts[ 1 ], '2666', { from: accounts[ 0 ] })
     const transferLog = res.logs.find(element => element.event.match('Transfer'))
     assert.strictEqual(transferLog.args._from, accounts[ 0 ])
-    if (useL2 == true) {
-      assert.strictEqual(transferLog.args._to, '0x4200000000000000000000000000000000000005')
-    } else {
-      assert.strictEqual(transferLog.args._to, accounts[ 1 ])
-    }
+    assert.strictEqual(transferLog.args._to, accounts[ 1 ])
     assert.strictEqual(transferLog.args._value.toString(), '2666')
   })
 
@@ -230,11 +226,7 @@ contract('ERC20', (accounts) => {
     const res = await token.transfer(accounts[ 1 ], '0', { from: accounts[ 0 ] })
     const transferLog = res.logs.find(element => element.event.match('Transfer'))
     assert.strictEqual(transferLog.args._from, accounts[ 0 ])
-    if (useL2 == true) {
-      assert.strictEqual(transferLog.args._to, '0x4200000000000000000000000000000000000005')
-    } else {
-      assert.strictEqual(transferLog.args._to, accounts[ 1 ])
-    }
+    assert.strictEqual(transferLog.args._to, accounts[ 1 ])
     assert.strictEqual(transferLog.args._value.toString(), '0')
   })
 
