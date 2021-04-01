@@ -1,4 +1,5 @@
 const { getArtifact } = require('../utils/getArtifact')
+
 /**
  * @dev Refactor to integration tests
  */
@@ -7,7 +8,7 @@ let token;
 const useL2 = (process.env.TARGET === 'OVM')
 const ERC20 = getArtifact(useL2, 'ERC20')
 
-contract('ERC20', (accounts) => {
+contract('Optimistic ERC20', (accounts) => {
   const tokenName = 'Optipus Coin'
   const tokenSymbol = 'OPT'
   const tokenDecimals = 1

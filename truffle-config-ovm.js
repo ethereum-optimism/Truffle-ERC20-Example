@@ -1,20 +1,13 @@
-
 const mnemonic = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat";
-const { ganache } = require('@eth-optimism/plugins/ganache')
+// import { ganache } from '@eth-optimism/plugins/ganache'
 
 module.exports = {
   contracts_build_directory: './build/contracts/ovm',
 
   networks: {
-    test: {
+    optimistic_ethereum: {
       network_id: 420,
-      provider: function() {
-        return ganache.provider({
-          mnemonic: mnemonic,
-          network_id: 420,
-        })
-      },
-    },
+    }
   },
   compilers: {
     solc: {
@@ -29,3 +22,5 @@ module.exports = {
     }
   }
 }
+
+// export { config }
