@@ -1,18 +1,10 @@
 {
   "name": "@ethereum-optimism/Truffle-ERC20-Example",
   "private": true,
-  "version": "0.0.1-alpha.5",
-  "description": "Example of using solc-transpiler & Web3 full node with Truffle to run a full ERC20 test suite",
+  "version": "1.0.0-alpha.1",
+  "description": "Example of using Optimistic Ethereum compiler & local Optimistic Ethereum nodes with Truffle to run a full ERC20 test suite",
   "scripts": {
-    "clean": "rimraf build build-ovm",
-    "build:evm": "truffle compile",
-    "build:ovm": "truffle compile --config truffle-config-ovm.js",
-    "migrate:evm": "truffle migrate --network ethereum",
-    "migrate:ovm": "TARGET=OVM truffle migrate --network optimistic_ethereum --config truffle-config-ovm.js",
-    "test:evm": "truffle test ./truffle-tests/test-erc20.js",
-    "test:ovm": "TARGET=OVM truffle test ./truffle-tests/optimistic-test-erc20.js --network optimistic_ethereum --config truffle-config-ovm.js",
-    "all:evm": "yarn build:evm && yarn test:evm",
-    "all:ovm": "yarn build:ovm && yarn test:ovm"
+    "clean": "rimraf build build-ovm"
   },
   "keywords": [
     "optimism",
