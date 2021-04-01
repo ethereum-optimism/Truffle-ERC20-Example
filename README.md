@@ -1,8 +1,9 @@
-# Getting Started with the OVM: Simple ERC20 Token Truffle Tutorial
+# Getting Started with the Optimistic Ethereum: Simple ERC20 Token Truffle Tutorial
 
-Hi there! Welcome to our OVM ERC20 Truffle example!
+Hi there! Welcome to our Optimistic Ethereum ERC20 Truffle example!
 
-If your preferred smart contract testing framework is Truffle, see our OVM ERC20 Truffle tutorial here (todo).
+If your preferred smart contract testing framework is Waffle, see our Optimistic Ethereum ERC20 Waffle tutorial [here](https://github.com/ethereum-optimism/Waffle-ERC20-Example).
+
 If you're interested in writing your first L2-compatible smart contract using Truffle as your smart contract testing framework, then you've come to the right place!
 This repo serves as an example for how go through and compile/test/deploy your contracts on both Ethereum and Optimistic Ethereum.
 
@@ -17,7 +18,7 @@ Please make sure you've installed the following before continuing:
 - [Yarn 1](https://classic.yarnpkg.com/en/docs/install#mac-stable)
 - [Docker](https://docs.docker.com/engine/install/)
 
-## Set up
+## Setup
 
 To start, clone this `Truffle-ERC20-Example` repo, enter it, and install all of its dependencies:
 
@@ -27,29 +28,7 @@ cd Waffle-ERC20-Example
 yarn install
 ```
 
-Then, copy the `.env-example` file and rename it `.env`, like so:
-
-```sh
-cp .env-example .env
-```
-
-This will give us our environment variables that we'll use later on.
-
-## Step 1: Compile your contracts
-
-### Compile an Ethereum contract
-
-Just like with any other project, we'll first need to compile our Solidity into EVM bytecode.
-Let's compile our ERC20 contract by running the following command:
-
-```sh
-yarn truffle compile
-```
-
-You should now see a new `build/contracts` directory which has some JSON files in it.
-If you can see this directory, you're ready to move onto the next section!
-
-### Compile an Optimistic Ethereum contract
+## Step 1: Compile your contracts for Optimistic Ethereum
 
 Compiling a contract for Optimistic Ethereum is pretty easy!
 First we'll need to install the [`@eth-optimism/solc`](https://www.npmjs.com/package/@eth-optimism/solc).
@@ -61,17 +40,35 @@ yarn add @eth-optimism/solc@0.7.6-alpha.1
 ```
 
 Next, we just need to add a new `truffle-config-ovm.js` file to compile our contracts.
-Create `truffle-config-ovm.js` and add the following to it:
+
+First, since in our new config file we'll be using a package called `@truffle/hdwallet-provider` to get a list of accounts with preexisting ether balances, we'll need to install this package:
+
+```sh
+yarn add @truffle/hdwallet-provider
+```
+
+Once that package is installed, we can create `truffle-config-ovm.js` and add the following to it:
 
 ```js
+const mnemonicPhrase = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+const HDWalletProvider = require('@truffle/hdwallet-provider')
+
 module.exports = {
-  contracts_build_directory: './build/contracts/ovm',
+  contracts_build_directory: './build-ovm',
   networks: {
     optimistic_ethereum: {
+      provider: function () {
+        return new HDWalletProvider({
+          mnemonic: {
+            phrase: mnemonicPhrase
+          },
+          providerOrUrl: 'http://127.0.0.1:8545'
+        })
+      },
       network_id: 420,
       host: '127.0.0.1',
       port: 8545,
-      gasPrice: 0
+      gasPrice: 0,
     }
   },
   compilers: {
@@ -101,23 +98,11 @@ yarn truffle compile --config truffle-config-ovm.js
 
 Our `truffle-config-ovm.js` config file tells Truffle that we want to use the Optimistic Ethereum solidity compiler.
 
-Yep, it's that easy. You can verify that everything went well by looking for inside the `build` directory for the new `ovm` path that contains your new JSON files.
+Yep, it's that easy. You can verify that everything went well by looking for the `build-ovm` directory that contains your new JSON files.
 
-Here, `ovm` signifies that the contracts contained in this directory have been compiled for the OVM, the **O**ptimistic **V**irtual **M**achine, as opposed to the Ethereum Virtual Machine. Now let's move on to testing!
+Here, `build-ovm` signifies that the contracts contained in this directory have been compiled for the OVM, the **O**ptimistic **V**irtual **M**achine, as opposed to the Ethereum Virtual Machine. Now let's move on to testing!
 
-## Step 2: Test your contracts
-
-### Test an Ethereum contract
-
-Testing with Truffle is easy. We've included a simple set of ERC20 tests inside [`Truffle-ERC20-Example/test/erc20.spec.js`](https://github.com/ethereum-optimism/Truffle-ERC20-Example/blob/main/test/erc20.test.js). Let's run these tests with `truffle`:
-
-```sh
-yarn truffle test ./test/erc20.spec.js
-```
-
-If everything went well, you should see a bunch of green checkmarks.
-
-### Testing an Optimistic Ethereum contract
+## Step 2: Testing your Optimistic Ethereum contracts
 
 Woot! It's finally time to test our contract on top of Optimistic Ethereum.
 But first we'll need to get a local version of an Optimistic Ethereum node running...
@@ -151,29 +136,27 @@ You now have your very own locally deployed instance of Optimistic Ethereum! ðŸ™
 
 -------
 
-With your local instance of Optimistic Ethereum up and running, let's test your contracts! Since the two JSON RPC provider URLs (one for your local instance Ethereum and Optimistic Ethereum) have already been specified in your `.env` file, all we need to do next is run the test command.
+With your local instance of Optimistic Ethereum up and running, let's test your contracts! Since the two JSON RPC provider URLs (one for your local instance Ethereum and Optimistic Ethereum) have already been specified in your Truffle config files, all we need to do next is run the test command.
 
 To do that, run:
 
 ```sh
-yarn truffle test ./test/erc20.spec.js --network optimistic_ethereum --config truffle-config-ovm.js TARGET=OVM
+yarn truffle test ./test/erc20.spec.js --network optimistic_ethereum --config truffle-config-ovm.js
 ```
 
-Notice that we are using the `TARGET=OVM` flag to let `truffle` know that we want to use the `build/contracts/ovm` folder as our path to our JSON files.
+Notice that we are using `truffle-config-ovn.js` to let `truffle` know that we want to use the `build-ovm` folder as our path to our JSON files.
 (Remember that these JSON files were compiled using the Optimistic Ethereum solidity compiler!)
 
 Additionally, we also specify the network we are testing on.
 In this case, we're testing our contract on `optimistic_ethereum`.
 
-You should see another set of passing tests. If so, congrats!
+You should see a set of passing tests for your ERC20 contract. If so, congrats!
 You're ready to deploy an application to Optimistic Ethereum.
 It really is that easy.
 
-## Step 3: Deploying your contracts
+## Step 3: Deploying your Optimistic Ethereum contracts
 
-### Deploying an Ethereum contract
-
-Going through this routine one more time. Now we're going to deploy an Ethereum contract using `truffle`. For Truffle based deployments, we're going to use Truffle's `migrate` command to run a migrations file for us that will deploy the contract we specify.
+Going through this routine one more time. Now we're going to deploy an Optimisic Ethereum contract using `truffle`. For Truffle based deployments, we're going to use Truffle's `migrate` command to run a migrations file for us that will deploy the contract we specify.
 
 First, let's create that migrations file.
 Create a new directory called `migrations` in the topmost path of your project and create a file within it called `1_deploy_ERC20_contract.js`.
@@ -181,9 +164,7 @@ Create a new directory called `migrations` in the topmost path of your project a
 Next, within `1_deploy_ERC20_contract.js`, we're going to add the following logic:
 
 ```js
-const { getArtifact } = require('../utils/getArtifact')
-
-const useL2 = (process.env.TARGET === 'OVM')
+const ERC20 = artifacts.require('ERC20')
 
 module.exports = function (deployer, accounts) {
   const tokenName = 'My Optimistic Coin'
@@ -191,40 +172,22 @@ module.exports = function (deployer, accounts) {
   const tokenDecimals = 1
 
   // deployment steps
-  deployer.deploy(getArtifact(useL2, 'ERC20'), 10000, tokenName, tokenDecimals, tokenSymbol)
+  deployer.deploy(ERC20, 10000, tokenName, tokenDecimals, tokenSymbol)
 }
 ```
 
-To quickly explain this file, first we import a utility function called `getArtifact` which use is used to retrieve either an Ethereum or Optimistic Ethereum compiled contract's artifact.
-This is achieved simply through a flag that we pass in on the command line and is implemented in the migrations file with the constant on line 3:
-
-```js
-const useL2 (process.env.TARGET === 'OVM')
-```
+To quickly explain this file, first we import our artifact for our ERC20 contract.
+Since we specified the build directory in our Truffle configs, Truffle knows whether we want to use either an Ethereum or Optimistic Ethereum contract artifact.
 
 Now we're ready to run our migrations file!
-To run it, run the following command:
-
-```sh
-yarn truffle migrate --network ethereum
-```
-
-This should deploy against a local (in-memory) Ethereum node that was spin up when we started the integrations repo.
-Cool.
-You'll see something like this in your terminal:
-
-![Truffle contract migrations to vanilla Ethereum complete](./assets/deploy-to-ethereum.png)
-
-### Deploying an Optimistic Ethereum contract
-
-Next we'll do the same thing on Optimistic Ethereum.
 Let's go ahead and deploy this contract:
 
 ```sh
-yarn TARGET=OVM truffle migrate --network optimistic_ethereum --config truffle-config-ovm.js
+yarn truffle migrate --network optimistic_ethereum --config truffle-config-ovm.js
 ```
 
-And once again we're adding `TARGET=OVM` and using the `--network optimism_ethereum` option.
+This should deploy against a local (in-memory) Optimistic Ethereum node that was spin up when we started the integrations repo.
+
 After a few seconds your contract should be deployed! Now you'll see this in your terminal:
 
 ![Truffle contract migrations to Optimistic Ethereum complete](./assets/deploy-to-optimistic-ethereum.png)
@@ -237,11 +200,12 @@ And uh... yeah. That's pretty much it. Contracts deployed! Tutorial complete. Ho
 
 ### OVM vs. EVM Incompatibilities
 
-Our goal is to bring the OVM as close to 100% compatibility with all existing Ethereum projects, but our software is still in an early stage. [This document](https://hackmd.io/elr0znYORiOMSTtfPJVAaA) will maintain the most up to date list of known incompatibilities between the OVM and EVM, along with our plans to fix them.
+Our goal is to bring the OVM as close to 100% compatibility with all existing Ethereum projects, but our software is still in an early stage. [Our community hub docs](https://community.optimism.io/docs/protocol/evm-comparison.html) will maintain the most up to date list of known incompatibilities between the OVM and EVM, along with our plans to fix them.
 
 ### Wasn't that easy?
 
-The OVM provides a fresh new take on layer 2 development: it's identical to layer 1 development.
+The OVM provides a fresh new take on layer 2 development: it's _mostly_ identical to layer 1 development.
+However, there are a few differences that are worth noting, which you can read more about in our [EVM comparison documentation](https://community.optimism.io/docs/protocol/evm-comparison.html).
 No hoops, no tricks--the Ethereum you know and love, ready to scale up with L2.
 For more info on our progress and what's going on behind the scenes, you can follow us on [Twitter](https://twitter.com/optimismPBC).
 
@@ -251,4 +215,4 @@ Want to try deploying contracts to the Optimistic Ethereum testnet next? [Check 
 
 ## Troubleshooting
 
-Example project not working? [Create a Github Issue](https://github.com/ethereum-optimism/ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
+Example project not working? [Create a Github Issue](https://github.com/ethereum-optimism/Truffle-ERC20-Example/issues), or hop in our [Discord](https://discordapp.com/invite/jrnFEvq) channel and ask away.
