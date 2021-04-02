@@ -7,7 +7,7 @@ If your preferred smart contract testing framework is Waffle, see our Optimistic
 If you're interested in writing your first L2-compatible smart contract using Truffle as your smart contract testing framework, then you've come to the right place!
 This repo serves as an example for how go through and compile/test/deploy your contracts on both Ethereum and Optimistic Ethereum.
 
-Note that this process is only to give a side-by-side comparison and is _not_ necessary for you to build an application on Optimistic Ethereum. With that out of the way, let's begin!
+Let's begin!
 
 ## Prerequisites
 
