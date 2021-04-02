@@ -25,6 +25,7 @@
     "url": "https://github.com/ethereum-optimism/Truffle-ERC20-Example.git"
   },
   "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.6",
     "rimraf": "^2.6.3",
     "truffle": "^5.3.0"
   },

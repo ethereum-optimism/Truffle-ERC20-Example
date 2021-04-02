@@ -41,13 +41,7 @@ yarn add @eth-optimism/solc@0.7.6-alpha.1
 
 Next, we just need to add a new `truffle-config-ovm.js` file to compile our contracts.
 
-First, since in our new config file we'll be using a package called `@truffle/hdwallet-provider` to get a list of accounts with preexisting ether balances, we'll need to install this package:
-
-```sh
-yarn add @truffle/hdwallet-provider
-```
-
-Once that package is installed, we can create `truffle-config-ovm.js` and add the following to it:
+Create `truffle-config-ovm.js` and add the following to it:
 
 ```js
 const mnemonicPhrase = "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
@@ -75,7 +69,7 @@ module.exports = {
     solc: {
       // Add path to the optimism solc fork
       version: "node_modules/@eth-optimism/solc",
-      settings: {          // See the solidity docs for advice about optimization and evmVersion
+      settings: {
         optimizer: {
           enabled: true,
           runs: 1
@@ -144,7 +138,7 @@ To do that, run:
 yarn truffle test ./test/erc20.spec.js --network optimistic_ethereum --config truffle-config-ovm.js
 ```
 
-Notice that we are using `truffle-config-ovn.js` to let `truffle` know that we want to use the `build-ovm` folder as our path to our JSON files.
+Notice that we are using `truffle-config-ovm.js` to let `truffle` know that we want to use the `build-ovm` folder as our path to our JSON files.
 (Remember that these JSON files were compiled using the Optimistic Ethereum solidity compiler!)
 
 Additionally, we also specify the network we are testing on.
