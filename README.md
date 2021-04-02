@@ -192,7 +192,10 @@ After a few seconds your contract should be deployed! Now you'll see this in you
 
 ![Truffle contract migrations to Optimistic Ethereum complete](./assets/deploy-to-optimistic-ethereum.png)
 
-And uh... yeah. That's pretty much it. Contracts deployed! Tutorial complete. Hopefully now you know the basics of working with Optimistic Ethereum.
+And uh... yeah.
+That's pretty much it.
+Contracts deployed!
+Tutorial complete. Hopefully now you know the basics of working with Optimistic Ethereum! 🅾️
 
 ------
 
