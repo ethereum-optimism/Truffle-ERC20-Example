@@ -24,7 +24,7 @@ To start, clone this `Truffle-ERC20-Example` repo, enter it, and install all of 
 
 ```sh
 git clone https://github.com/ethereum-optimism/Truffle-ERC20-Example.git
-cd Waffle-ERC20-Example
+cd Truffle-ERC20-Example
 yarn install
 ```
 
