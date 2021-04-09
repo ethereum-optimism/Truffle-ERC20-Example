@@ -1,4 +1,4 @@
-# Getting Started with the Optimistic Ethereum: Simple ERC20 Token Truffle Tutorial
+# Getting Started with Optimistic Ethereum: Simple ERC20 Token Truffle Tutorial
 
 Hi there! Welcome to our Optimistic Ethereum ERC20 Truffle example!
 
