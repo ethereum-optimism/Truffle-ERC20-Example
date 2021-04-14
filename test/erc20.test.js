@@ -8,7 +8,10 @@ contract('ERC20', (accounts) => {
   const tokenDecimals = 1
 
   beforeEach(async () => {
-    token = await ERC20.new(10000, tokenName, tokenDecimals, tokenSymbol, { from: accounts[ 0 ] })
+    token = await ERC20.new(10000, tokenName, tokenDecimals, tokenSymbol, {
+      from: accounts[ 0 ],
+      gasPrice: 0
+    })
   })
 
   it('creation: should create an initial balance of 10000 for the creator', async () => {

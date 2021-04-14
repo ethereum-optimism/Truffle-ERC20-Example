@@ -1,6 +1,5 @@
 # Project specific
-optimism-integration
-build
+optimism
 truffle-config-ovm.js
 build 
 build-ovm

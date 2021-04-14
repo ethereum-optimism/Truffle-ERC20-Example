@@ -4,8 +4,7 @@ module.exports = {
     ethereum: {
       network_id: 31337,
       host: '127.0.0.1',
-      port: 9545,
-      gasPrice: 0,
+      port: 9545
     },
   },
   // Configure your compilers

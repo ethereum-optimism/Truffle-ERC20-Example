@@ -135,7 +135,7 @@ With your local instance of Optimistic Ethereum up and running, let's test your 
 To do that, run:
 
 ```sh
-yarn truffle test ./test/erc20.spec.js --network optimistic_ethereum --config truffle-config-ovm.js
+yarn truffle test ./test/erc20.test.js --network optimistic_ethereum --config truffle-config-ovm.js
 ```
 
 Notice that we are using `truffle-config-ovm.js` to let `truffle` know that we want to use the `build-ovm` folder as our path to our JSON files.
