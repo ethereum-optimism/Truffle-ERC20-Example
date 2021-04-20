@@ -4,7 +4,8 @@
   "version": "1.0.0-alpha.1",
   "description": "Example of using Optimistic Ethereum compiler & local Optimistic Ethereum nodes with Truffle to run a full ERC20 test suite",
   "scripts": {
-    "clean": "rimraf build"
+    "clean": "rimraf build",
+    "ci-setup": "yarn add@eth-optimism/solc@0.7.6-alpha.1 && yarn add solc@0.7.6"
   },
   "keywords": [
     "optimism",
