@@ -103,29 +103,19 @@ But first we'll need to get a local version of an Optimistic Ethereum node runni
 
 -------
 
-Fortunately, we have a [handy dandy repository](https://github.com/ethereum-optimism/optimism-integration) that makes it easy to spin up a local Optimistic Ethereum node!
+Fortunately, we have some handy dandy tools that make it easy to spin up a local Optimistic Ethereum node!
 
-Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that [here](https://docs.docker.com/engine/install/)).
+Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that here). We recommend opening up a second terminal for this part. This way you'll be able to keep the Optimistic Ethereum node running so you can execute some contract tests.
 
-Now we just need to install our Optimistic Ethereum node by running:
+Now we just need to download, build, and install our Optimistic Ethereum node by running the following commands. Please note that docker-compose build will take a while. We're working on improving this (sorry)!
 
-```sh
-git clone git@github.com:ethereum-optimism/optimism-integration.git --recurse-submodules
-cd optimism-integration
-./pull.sh
-```
-
-`./pull.sh` will pull the latest version of all of our docker images and make sure everything else is up to date.
-
-Then we'll run the `./up.sh` command to spin up our node:
-
-```sh
-./up.sh
-```
-
-Give `./up.sh` a little bit to fully start up (could be up to ~30 seconds).
-We'll need to keep this terminal running for the rest of this tutorial (it's your Optimistic Ethereum node). Go ahead and open up a second terminal so that you can run more commands while the other terminal is still running.
-
+git clone git@github.com:ethereum-optimism/optimism.git
+cd optimism
+yarn install
+yarn build
+cd ops
+docker-compose build
+docker-compose up
 You now have your very own locally deployed instance of Optimistic Ethereum! 🙌
 
 -------
