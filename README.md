@@ -105,10 +105,15 @@ But first we'll need to get a local version of an Optimistic Ethereum node runni
 
 Fortunately, we have some handy dandy tools that make it easy to spin up a local Optimistic Ethereum node!
 
-Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that here). We recommend opening up a second terminal for this part. This way you'll be able to keep the Optimistic Ethereum node running so you can execute some contract tests.
+Since we're going to be using Docker, make sure that Docker is installed on your machine prior to moving on (info on how to do that [here](https://docs.docker.com/engine/install/)).
+**We recommend opening up a second terminal for this part.**
+This way you'll be able to keep the Optimistic Ethereum node running so you can execute some contract tests.
 
-Now we just need to download, build, and install our Optimistic Ethereum node by running the following commands. Please note that docker-compose build will take a while. We're working on improving this (sorry)!
+Now we just need to download, build, and install our Optimistic Ethereum node by running the following commands.
+Please note that `docker-compose build` *will* take a while.
+We're working on improving this (sorry)!
 
+```sh
 git clone git@github.com:ethereum-optimism/optimism.git
 cd optimism
 yarn install
@@ -116,6 +121,8 @@ yarn build
 cd ops
 docker-compose build
 docker-compose up
+```
+
 You now have your very own locally deployed instance of Optimistic Ethereum! 🙌
 
 -------
