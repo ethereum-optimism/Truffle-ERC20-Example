@@ -1,5 +1,7 @@
 # Getting Started with Optimistic Ethereum: Simple ERC20 Token Truffle Tutorial
 
+## TRUFFLE CURRENTLY DOES NOT WORK FOR TESTING OR DEPLOYING CONTRACTS. PLEASE WAIT OR SWITCH TO HARDHAT UNTIL THIS ISSUE IS RESOLVED
+
 Hi there! Welcome to our Optimistic Ethereum ERC20 Truffle example!
 
 If your preferred smart contract testing framework is Waffle, see our Optimistic Ethereum ERC20 Waffle tutorial [here](https://github.com/ethereum-optimism/Waffle-ERC20-Example). 
