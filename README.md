@@ -1,3 +1,5 @@
+**[DEPRECATED]** This repository is now deprecated in favour of the new development [monorepo](https://github.com/ethereum-optimism/optimism-monorepo).
+
 # Getting Started with Optimistic Ethereum: Simple ERC20 Token Truffle Tutorial
 
 Hi there! Welcome to our Optimistic Ethereum ERC20 Truffle example!
